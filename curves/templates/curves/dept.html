@@ -1,0 +1,47 @@
+<!-- HTML template for displaying the aggregrate grade distribution for a department, as well as links to all the classes in that department -->
+{% extends 'curves/base.html' %}
+{% block content %}
+{% load mathfilters %}
+{% load static %}
+<h1 class="title">{{ dept }}</h1>
+		<!-- Dropdown of courses in the department across all semesters -->
+		<div class="dropdown dropdown-tip dropwdown-scroll">
+		  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
+		    Select an Individual Class
+		    <span class="caret"></span>
+		  </button>
+		  <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+		    {% for course in course_list %}
+  		 		<li role = "presentation"> <a role ="menuitem"  tabindex="-1" href = "/curves/{{ course.dept }}/{{ course.num }}/"> {{ course }} </a> </li>
+			{% endfor %}
+		  </ul>
+		</div>
+
+		<!-- Tabs to all semesters in which courses from this department are offered -->
+		<ul class="nav nav-tabs">
+			<li role="presentation" class="active"><a href="#">View All Semesters</a></li>
+			{% for s in sem_list %}
+  		 		<li role = "presentation"> <a role ="menuitem"  tabindex="-1" href = "/curves/{{ dept }}/{{ s }}/">{{ s }} </a> </li>
+			{% endfor %}
+	  	</ul> 
+
+
+		<div id="container" style="width:100%; height:400px;"></div>
+
+		<!-- Generate (hidden) table from whichto reference data for chart -->
+		<table class="thisTable">
+			{% for grade, number in dist %}
+			<!-- Optional functionality: only show grades that make up >x% of grades; may be
+			     useful for deciding whether to show PDF  -->
+					<tr>
+						<td class="_grade" hidden>{{ grade }}</td>
+						<td class="_numGrade" hidden>{{ number }}</td>
+					</tr>
+			{% endfor %}
+		</table>
+<!-- {% endblock %} 
+
+{% block script %} -->
+<script src = "{% static 'curves/js/highchartsscript.js' %}"></script>
+{% endblock %}
+
