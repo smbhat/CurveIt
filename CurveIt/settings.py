@@ -106,14 +106,14 @@ CAS_SERVER_URL = "https://fed.princeton.edu/cas/login"
 import dj_database_url
 DATABASES['default'] =  dj_database_url.config()
 
-DATABASES['default'] = {
-    'ENGINE': 'django.db.backends.postgresql_psycopg2',
-    'NAME': 'mylocaldb',
-    'USER': 'smbhat',
-    'PASSWORD': 'TH4President',
-    'HOST': '',
-    'PORT': '',
-    }
+# DATABASES['default'] = {
+#     'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#     'NAME': 'mylocaldb',
+#     'USER': 'smbhat',
+#     'PASSWORD': 'TH4President',
+#     'HOST': '',
+#     'PORT': '',
+#     }
 
 
 # Honor the 'X-Forwarded-Proto' header for request.is_secure()
