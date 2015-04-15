@@ -84,7 +84,7 @@ class Course_Specific(models.Model):
 		
 class User(models.Model):
 	netid = models.CharField(max_length = 50) # e.g. 'tylerh'
-	name = models.CharField(max_length = 100, default="")
+	name = models.CharField(max_length = 200, default="")
 	year = models.CharField(max_length = 4, default="")
 	has_Entered = models.BooleanField(default = False)
 
