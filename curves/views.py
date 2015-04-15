@@ -13,11 +13,11 @@ GRADES = ["A+", "A", "A-", "B+", "B", "B-", "C+", "C", "C-", "D_grade", "F_grade
 
 def index(request):
     return render(request, 'curves/index.html')
+
 @login_required 
 # ex: curves/COS.  Shows dropdown for all distinct COS classes taught since birth, 
 # plot of all time aggregate distribution, links to deptSpecific for each semester.
 def deptView(request, cdept):
-    print "\nDepartment View: %s" % request.user.username
     # get all courses registered under the department, including those that are cross listed
     course_list = get_list_or_404(Course_Specific, dept__contains = cdept) # includes all semesters
     
