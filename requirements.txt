@@ -4,6 +4,6 @@ Django==1.8
 django-cas-ng==3.4.2
 django-mathfilters==0.3.0
 django-toolbelt==0.0.1
-gunicorn==19.3.0
+gunicorn==19.5.0
 psycopg2==2.6
 static3==0.5.1
